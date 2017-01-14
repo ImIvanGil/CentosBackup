@@ -1,0 +1,22 @@
+#!/bin/bash
+
+#Autor: orion
+#Fecha: Fri Oct 28 10:35:17 PDT 2016
+#Comentario: ver uso de disco 
+
+disco=$(df | grep root)
+use=$(echo $disco | cut -d " " -f 5 )
+used=$(echo $disco | cut -d " " -f 3 )
+available=$(echo $disco | cut -d " " -f 4 )
+
+porcentajeDisco=$(echo "$used*100/$available" | bc)
+
+echo $porcentajeDisco
+
+if [ $porcentajeDisco -gt 80 ]; then
+	echo valiendo madre
+else
+	echo todo bien
+fi
+
+exit 0

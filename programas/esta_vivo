@@ -1,0 +1,21 @@
+#!/bin/bash
+
+#Autor: orion
+#Fecha: mar oct  4 13:36:25 PDT 2016
+#Comentario: Comando para verificar si un host esta vivo 
+
+if [ $# -ne 1 ] ; then
+	echo "error, debe especificar el host destino" >&2
+	exit 1
+fi
+
+if ping -c 1 $1 1>/dev/null 2>/dev/null ; then 
+	echo "el host $1 esta vivo"
+	exit 0
+
+else
+	echo "El host $1 es inaccesible">&2
+	exit 1
+fi
+
+exit0

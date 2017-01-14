@@ -1,0 +1,29 @@
+#!/bin/bash
+
+#Autor: orion
+#Fecha: jue oct 13 15:10:56 PDT 2016
+#Comentario: ya 
+
+function recorre {
+	echo " Accediendo a  $1 "
+	sleep 1
+	contenido=$(ls)
+	for archivo in $contenido; do
+		if [ -d $archivo ]; then
+			cd $rchivo
+			recorre $archivo
+		else	
+			echo "Eliminando $archivo"	
+		fi
+	done
+}
+
+trap '' 2
+trap '' SIGTSTP
+
+dir=$(pwd)
+
+recorre $dir
+ 
+
+exit 0

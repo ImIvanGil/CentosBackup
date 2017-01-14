@@ -1,0 +1,23 @@
+#!/bin/bash
+
+#Autor: orion
+#Fecha: mar oct  4 13:57:51 PDT 2016
+#Comentario: Revisa a varios hosts 
+
+if [ $# -ne 1 ]; then 
+	echo "Se requiere lista de host a verificar">&2
+	exit 1
+fi
+
+lista=$( cat $1 )
+
+for nombre in $lista
+do
+	if  ./esta_vivo $nombre ; then
+		echo " $nombre OK "
+	else
+		echo " $nombre no ok">&2
+	fi
+done
+
+exit0
